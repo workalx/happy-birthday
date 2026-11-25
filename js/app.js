@@ -31,7 +31,7 @@
   const opened = new Set();
 
   // ---------- відео ----------
-  function playToEnd(v, maxMs = 6000) {
+  function playToEnd(v, maxMs = 9000) {
     return new Promise((resolve) => {
       let done = false;
       const finish = () => { if (!done) { done = true; resolve(); } };
@@ -54,6 +54,8 @@
   async function enter() {
     if (busy) return; busy = true;
     Sound.init();
+    // у відео є власний звук (вигуки друзів) — вмикаємо після кліку користувача
+    [els.vEntrance, els.vGreet, els.vFinale].forEach((v) => { v.muted = Sound.muted; v.volume = 0.7; });
     if (matchMedia('(orientation: portrait)').matches && matchMedia('(pointer: coarse)').matches) els.rotate.classList.remove('hidden');
     els.start.classList.add('out');
     show(els.vEntrance);
@@ -235,6 +237,7 @@
   els.replay.addEventListener('click', () => location.reload());
   els.mute.addEventListener('click', () => {
     Sound.setMuted(!Sound.muted);
+    [els.vEntrance, els.vGreet, els.vFinale].forEach((v) => { v.muted = Sound.muted; });
     els.mute.textContent = Sound.muted ? '🔇' : '🔊';
     els.mute.setAttribute('aria-label', Sound.muted ? 'Увімкнути звук' : 'Вимкнути звук');
   });
