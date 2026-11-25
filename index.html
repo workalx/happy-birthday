@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>З днем народження! 🎁</title>
+<meta name="description" content="Маленький мультик-привітання від друзів">
+<meta property="og:title" content="З днем народження! 🎁">
+<meta property="og:description" content="Заходь — тебе вже чекають 💛">
+<meta property="og:image" content="assets/img/friends.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <img id="bgBlur" src="assets/img/room.webp" alt="" aria-hidden="true">
+
+  <main id="frame" aria-live="polite">
+    <video id="vEntrance" src="assets/video/entrance.mp4" poster="assets/img/entrance-first.jpg" muted playsinline preload="auto"></video>
+    <video id="vGreet" src="assets/video/greet.mp4" poster="assets/img/greet-first.jpg" muted playsinline preload="auto"></video>
+    <video id="vFinale" src="assets/video/finale.mp4" poster="assets/img/finale-first.jpg" muted playsinline preload="auto"></video>
+
+    <section id="giftsScene" class="layer">
+      <img src="assets/img/gifts.webp" alt="Стіл із шістьма подарунками" class="fill">
+      <h2 class="scene-title">Обери подарунок</h2>
+      <div id="gifts"></div>
+      <button id="toFinale" class="btn btn-small hidden">Завершити ➜</button>
+    </section>
+
+    <div id="flash" class="layer"></div>
+    <canvas id="confetti" class="layer"></canvas>
+
+    <section id="greetText" class="layer overlay-text hidden">
+      <h1 class="big-title">З днем народження!</h1>
+      <p class="sub">Від твоїх друзів — з любов'ю 💛</p>
+    </section>
+
+    <section id="greetNext" class="layer hidden">
+      <div class="bubble">
+        <p>А тепер — подарунки! Кожен для свого настрою 🎁</p>
+        <button id="toGifts" class="btn">Відкрити подарунки</button>
+      </div>
+    </section>
+
+    <section id="finaleText" class="layer overlay-text hidden">
+      <h1 class="big-title">Ми тебе дуже любимо!</h1>
+      <p class="sub">Нехай ці слова будуть поруч у будь-який день</p>
+      <div class="row">
+        <a id="printBtn" class="btn" href="print.html" target="_blank" rel="noopener">🖨 Роздрукувати вірші</a>
+        <button id="replayBtn" class="btn btn-ghost">↺ Ще раз</button>
+      </div>
+    </section>
+
+    <section id="start" class="layer">
+      <img src="assets/img/entrance-first.jpg" alt="" class="fill dim">
+      <div class="start-inner">
+        <p class="kicker">Тебе вже чекають…</p>
+        <button id="enterBtn" class="btn btn-big">Увійти 🚪</button>
+        <p class="hint">Увімкни звук 🔊</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Біблія поверх усього -->
+  <div id="bibleLayer" class="hidden" role="dialog" aria-modal="true" aria-label="Вірш">
+    <div id="light"></div>
+    <div id="rays"></div>
+    <div id="sparkles"></div>
+    <img id="bookClosed" src="assets/img/bible-closed.webp" alt="Біблія">
+    <div id="bookOpen">
+      <img src="assets/img/bible-open.webp" alt="">
+      <div class="page page-left">
+        <div class="mood"></div>
+        <div class="ornament">✦ ✝ ✦</div>
+        <div class="ref"></div>
+      </div>
+      <div class="page page-right"><p class="verse"></p></div>
+    </div>
+    <p id="tapHint">Натисни будь-де, щоб закрити</p>
+  </div>
+
+  <button id="muteBtn" class="icon-btn" aria-label="Вимкнути звук">🔊</button>
+  <div id="rotateHint" class="hidden">Поверни телефон горизонтально для кращого перегляду 📱↻ <button aria-label="Закрити">✕</button></div>
+
+  <script src="js/verses.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
